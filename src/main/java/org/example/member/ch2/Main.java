@@ -1,4 +1,6 @@
-package org.example.member;
+package org.example.member.ch2;
+
+import org.example.member.Member;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
