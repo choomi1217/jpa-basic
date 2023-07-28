@@ -1,4 +1,4 @@
-package org.example.member.ch2;
+package org.example.ch2;
 
 import org.example.member.Member;
 
