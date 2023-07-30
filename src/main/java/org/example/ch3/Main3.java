@@ -25,8 +25,6 @@ public class Main3 {
         member.setName("Jo");
         member.setAge(30);
 
-        em.remove(member);
-
         tx.commit();
 
         emf.close();
