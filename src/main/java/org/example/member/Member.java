@@ -16,6 +16,14 @@ public class Member {
 
     private Integer age;
 
+    public Member() {
+    }
+
+    public Member(String name, Integer age) {
+        this.name = name;
+        this.age = age;
+    }
+
     public Long getId() {
         return id;
     }

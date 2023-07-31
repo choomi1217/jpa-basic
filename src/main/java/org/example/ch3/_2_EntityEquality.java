@@ -2,10 +2,13 @@ package org.example.ch3;
 
 import org.example.member.Member;
 
-import javax.persistence.*;
-import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
 
-public class Main4 {
+public class _2_EntityEquality {
+
     public static void main(String[] args) {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("myApp");
         EntityManager em = emf.createEntityManager();
@@ -15,26 +18,24 @@ public class Main4 {
 
         Member memberA = new Member();
         memberA.setName("A");
-        memberA.setAge(10);
+        memberA.setAge(20);
 
         Member memberB = new Member();
         memberB.setName("B");
-        memberB.setAge(20);
-
-        Member memberC = new Member();
-        memberC.setName("C");
-        memberC.setAge(30);
+        memberB.setAge(30);
 
         em.persist(memberA);
         em.persist(memberB);
-        em.persist(memberC);
 
-        TypedQuery<Member> query = em.createQuery("select m from Member m", Member.class);
-        List<Member> members = query.getResultList();
 
-        members.forEach(m -> {
-            System.out.println("name : " + m.getName());
-        });
+        tx.commit();
 
+        em.remove(memberA);
+        em.remove(memberB);
+
+        tx.commit();
+
+        emf.close();
     }
+
 }

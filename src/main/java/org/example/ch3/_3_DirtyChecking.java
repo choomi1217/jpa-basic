@@ -7,7 +7,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
-public class Main3 {
+public class _3_DirtyChecking {
 
     public static void main(String[] args) {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("myApp");
@@ -20,7 +20,7 @@ public class Main3 {
         member.setName("cho");
         member.setAge(20);
 
-        em.persist(member);;
+        em.persist(member);
 
         member.setName("Jo");
         member.setAge(30);

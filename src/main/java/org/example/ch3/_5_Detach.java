@@ -7,32 +7,24 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
-public class Main {
+public class _5_Detach {
     public static void main(String[] args) {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("myApp");
         EntityManager em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();
 
         tx.begin();
-        logic(em);
-        tx.commit();
 
-        emf.close();
-    }
-
-    private static void logic(EntityManager em) {
         Member member = new Member();
         member.setName("cho");
         member.setAge(20);
 
         em.persist(member);
 
-        Member member1 = em.find(Member.class, member.getId());
-        Member member2 = em.find(Member.class, member.getId());
+        em.detach(member);
 
-        em.remove(member);
+        tx.commit();
 
-        System.out.println(member1 == member2);
-
+        emf.close();
     }
 }
