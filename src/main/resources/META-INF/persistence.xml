@@ -11,6 +11,8 @@
         <class>org.example.ch4.AccessTypeFieldEntity</class>
         <class>org.example.ch4.AccessTypePropertyEntity</class>
         <class>org.example.ch4.AccessTypeFieldAndPropertyEntity</class>
+        <class>org.example.ch5.Player</class>
+        <class>org.example.ch5.Team</class>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
             <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/postgres?currentSchema=jpa"/>
