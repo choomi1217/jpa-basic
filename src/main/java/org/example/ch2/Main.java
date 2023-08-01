@@ -35,7 +35,7 @@ public class Main {
         Member findMember = em.find(Member.class, id);
         System.out.println("findMember = " + findMember.getName() + ", age = " + findMember.getAge());
 
-        List<Member> members = em.createQuery("select m from Member m", Member.class)
+        List<Member> members = em.createQuery("select m from IdentityUser m", Member.class)
                 .getResultList();
         System.out.println("members.size() = " + members.size());
 

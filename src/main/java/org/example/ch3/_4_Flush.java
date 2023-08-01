@@ -29,7 +29,7 @@ public class _4_Flush {
         em.persist(memberB);
         em.persist(memberC);
 
-        TypedQuery<Member> query = em.createQuery("select m from Member m", Member.class);
+        TypedQuery<Member> query = em.createQuery("select m from IdentityUser m", Member.class);
         List<Member> members = query.getResultList();
 
         members.forEach(m -> {
