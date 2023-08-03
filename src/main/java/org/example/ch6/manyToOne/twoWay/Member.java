@@ -1,4 +1,4 @@
-package org.example.ch6.oneToMany;
+package org.example.ch6.manyToOne.twoWay;
 
 import javax.persistence.*;
 

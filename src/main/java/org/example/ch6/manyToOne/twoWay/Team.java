@@ -1,6 +1,5 @@
-package org.example.ch6.oneToMany;
+package org.example.ch6.manyToOne.twoWay;
 
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;

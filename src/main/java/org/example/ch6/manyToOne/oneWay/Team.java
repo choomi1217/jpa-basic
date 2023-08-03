@@ -1,4 +1,4 @@
-package org.example.ch6.manyToOne;
+package org.example.ch6.manyToOne.oneWay;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
