@@ -5,32 +5,32 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.util.List;
 
-public class _2_OneToManyEntity {
+public class _2_OneWayEntity {
     public static void main(String[] args) {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("myApp");
         EntityManager em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();
 
         tx.begin();
-        Team team = new Team("team1", "팀1");
-        em.persist(team);
+        OneWayTeam oneWayTeam = new OneWayTeam("team1", "팀1");
+        em.persist(oneWayTeam);
 
-        Player player = new Player("member1", "회원1");
-        player.setTeam(team);
-        em.persist(player);
+        OneWayPlayer oneWayPlayer = new OneWayPlayer("member1", "회원1");
+        oneWayPlayer.setOneWayTeam(oneWayTeam);
+        em.persist(oneWayPlayer);
 
-        Team playerTeam = player.getTeam();
-        System.out.println("playerTeam = " + playerTeam.getName());
+        OneWayTeam playerOneWayTeam = oneWayPlayer.getOneWayTeam();
+        System.out.println("playerTeam = " + playerOneWayTeam.getName());
 
         jpqlLogin(em);
 
-        Team team2 = new Team("team2", "팀2");
-        em.persist(team2);
+        OneWayTeam oneWayTeam2 = new OneWayTeam("team2", "팀2");
+        em.persist(oneWayTeam2);
 
-        Player findPlayer = em.find(Player.class, "member1");
-        findPlayer.setTeam(team2);
+        OneWayPlayer findOneWayPlayer = em.find(OneWayPlayer.class, "member1");
+        findOneWayPlayer.setOneWayTeam(oneWayTeam2);
 
-        findPlayer.setTeam(null);
+        findOneWayPlayer.setOneWayTeam(null);
 
         tx.commit();
         emf.close();
@@ -38,18 +38,18 @@ public class _2_OneToManyEntity {
     }
 
     private static void jpqlLogin(EntityManager em){
-        String jpql = "select p from Player p join p.team t where t.name = :teamName";
-        List<Player> resultList = em.createQuery(jpql, Player.class)
+        String jpql = "select p from OneWayPlayer p join p.oneWayTeam t where t.name = :teamName";
+        List<OneWayPlayer> resultList = em.createQuery(jpql, OneWayPlayer.class)
                 .setParameter("teamName", "팀1")
                 .getResultList();
-        resultList.forEach(player -> System.out.println("player = " + player.getUsername()));
+        resultList.forEach(oneWayPlayer -> System.out.println("player = " + oneWayPlayer.getUsername()));
     }
 
 }
 
 @Entity
 @NoArgsConstructor
-class Player {
+class OneWayPlayer {
 
     @Id
     @Column(name = "MEMBER_ID")
@@ -58,9 +58,9 @@ class Player {
 
     @ManyToOne
     @JoinColumn(name = "TEAM_ID")
-    private Team team;
+    private OneWayTeam oneWayTeam;
 
-    public Player(String id, String username) {
+    public OneWayPlayer(String id, String username) {
         this.id = id;
         this.username = username;
     }
@@ -81,24 +81,24 @@ class Player {
         this.username = username;
     }
 
-    public Team getTeam() {
-        return team;
+    public OneWayTeam getOneWayTeam() {
+        return oneWayTeam;
     }
 
-    public void setTeam(Team team) {
-        this.team = team;
+    public void setOneWayTeam(OneWayTeam oneWayTeam) {
+        this.oneWayTeam = oneWayTeam;
     }
 }
 
 @Entity
 @NoArgsConstructor
-class Team{
+class OneWayTeam {
     @Id
     @Column(name = "TEAM_ID")
     private String id;
     private String name;
 
-    public Team(String id, String name) {
+    public OneWayTeam(String id, String name) {
         this.id = id;
         this.name = name;
     }

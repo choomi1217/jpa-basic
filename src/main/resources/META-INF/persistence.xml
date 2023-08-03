@@ -11,14 +11,21 @@
         <class>org.example.ch4.AccessTypeFieldEntity</class>
         <class>org.example.ch4.AccessTypePropertyEntity</class>
         <class>org.example.ch4.AccessTypeFieldAndPropertyEntity</class>
-        <class>org.example.ch5.Player</class>
-        <class>org.example.ch5.Team</class>
+        <class>org.example.ch5.OneWayPlayer</class>
+        <class>org.example.ch5.OneWayTeam</class>
+        <class>org.example.ch5.TwoWayPlayer</class>
+        <class>org.example.ch5.TwoWayTeam</class>
+        <class>org.example.ch5.practice.Entity.OrderItem</class>
+        <class>org.example.ch5.practice.Entity.Item</class>
+        <class>org.example.ch5.practice.Entity.Order</class>
+        <class>org.example.ch5.practice.Entity.Member</class>
+
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
             <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/postgres?currentSchema=jpa"/>
             <property name="javax.persistence.jdbc.user" value="postgres"/>
             <property name="javax.persistence.jdbc.password" value="postgres"/>
-            <property name="hibernate.hbm2ddl.auto" value="create"/>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="true"/>
             <property name="hinernate.ejb.naming_strategy" value="org.hibernate.cfg.ImprovedNamingStrategy"/>

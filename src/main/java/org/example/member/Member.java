@@ -3,8 +3,6 @@ package org.example.member;
 
 import javax.persistence.*;
 
-@Entity
-@Table(name = "member")
 public class Member {
 
     @Id
