@@ -4,6 +4,7 @@ import lombok.NoArgsConstructor;
 import org.example.ch6.manyToMany.relationTable.compositeKey.MemberProduct;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -14,7 +15,7 @@ public class Member {
     private Long id;
     private String username;
     @OneToMany(mappedBy = "member")
-    private List<MemberProduct> memberProducts;
+    private List<Order> orders = new ArrayList<Order>();
 
     public Long getId() {
         return id;
