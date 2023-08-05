@@ -12,7 +12,8 @@ public class Locker {
     private Long id;
     private String name;
 
-    @OneToOne(mappedBy = "locker")
+    @OneToOne
+    @JoinColumn(name = "member_id")
     private Member member;
 
     public Locker(String name) {
@@ -32,6 +33,12 @@ public class Locker {
     }
 
     public void setMember(Member member) {
+        if(this.member != null){
+            this.member.setLocker(null);
+        }
         this.member = member;
+        if(member.getLocker() != this){
+            member.setLocker(this);
+        }
     }
 }

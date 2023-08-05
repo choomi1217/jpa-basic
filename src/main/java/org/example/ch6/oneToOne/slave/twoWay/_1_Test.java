@@ -14,7 +14,7 @@ public class _1_Test {
 
         Locker locker = new Locker("locker1");
         Member member = new Member("member1");
-        member.setLocker(locker);
+        locker.setMember(member);
 
         em.persist(locker);
         em.persist(member);

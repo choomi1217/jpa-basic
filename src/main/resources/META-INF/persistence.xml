@@ -4,9 +4,9 @@
              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
              http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
     <persistence-unit name="myApp">
-        <class>org.example.ch6.oneToOne.master.twoWay.Member</class>
-        <class>org.example.ch6.oneToOne.master.twoWay.Locker</class>
-
+        <class>org.example.ch6.manyToMany.relationTable.compositeKey.Member</class>
+        <class>org.example.ch6.manyToMany.relationTable.compositeKey.Product</class>
+        <class>org.example.ch6.manyToMany.relationTable.compositeKey.MemberProduct</class>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
             <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/postgres?currentSchema=jpa"/>
@@ -15,7 +15,7 @@
             <property name="hibernate.hbm2ddl.auto" value="update"/>
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="true"/>
-            <property name="hinernate.ejb.naming_strategy" value="org.hibernate.cfg.ImprovedNamingStrategy"/>
+            <property name="hibernate.ejb.naming_strategy" value="org.hibernate.cfg.ImprovedNamingStrategy"/>
         </properties>
     </persistence-unit>
 </persistence>
