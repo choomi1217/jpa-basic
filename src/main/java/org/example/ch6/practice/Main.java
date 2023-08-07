@@ -37,17 +37,17 @@ public class Main {
         //회원 주문내역 조회
         System.out.println("----- " + cho.getName() + " 회원님의 주문내역 -----");
         cho.getPurchases().forEach(userPurchase -> {
-            System.out.println("주문번호 : " + userPurchase.getId());
-            System.out.println("주문상태 : " + userPurchase.getStatus());
-            System.out.println("주문날짜 : " + userPurchase.getPurchaseDate());
+            System.out.println("* 주문번호 : " + userPurchase.getId());
+            System.out.println("* 주문상태 : " + userPurchase.getStatus());
+            System.out.println("* 주문날짜 : " + userPurchase.getPurchaseDate());
             userPurchase.getPurchaseItems().forEach(purchaseItem -> {
-                System.out.println("    상품명 : " + purchaseItem.getItem().getName());
+                System.out.println("* 상품명 : " + purchaseItem.getItem().getName());
                 purchaseItem.getItem().getCategoryItem().forEach(categoryItem -> {
-                    System.out.println("        상품 카테고리 : " + categoryItem.getCategory().getName());
+                    System.out.println("* 상품 카테고리 : " + categoryItem.getCategory().getName());
                 });
-                System.out.println("    상품가격 : " + purchaseItem.getItem().getPrice());
-                System.out.println("    상품수량 : " + purchaseItem.getCount());
-                System.out.println("    총 가격 : " + purchaseItem.getPurchasePrice());
+                System.out.println("* 상품가격 : " + purchaseItem.getItem().getPrice());
+                System.out.println("* 상품수량 : " + purchaseItem.getCount());
+                System.out.println("* 총 가격 : " + purchaseItem.getPurchasePrice());
             });
             System.out.println("-----");
         });
