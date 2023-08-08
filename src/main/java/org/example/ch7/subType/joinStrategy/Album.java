@@ -1,4 +1,4 @@
-package org.example.ch7.subType;
+package org.example.ch7.subType.joinStrategy;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;

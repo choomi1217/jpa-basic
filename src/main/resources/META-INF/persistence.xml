@@ -4,10 +4,10 @@
              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
              http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
     <persistence-unit name="myApp">
-        <class>org.example.ch7.subType.Item</class>
-        <class>org.example.ch7.subType.Movie</class>
-        <class>org.example.ch7.subType.Album</class>
-        <class>org.example.ch7.subType.Book</class>
+        <class>org.example.ch7.subType.singleTableStrategy.Item</class>
+        <class>org.example.ch7.subType.singleTableStrategy.Movie</class>
+        <class>org.example.ch7.subType.singleTableStrategy.Album</class>
+        <class>org.example.ch7.subType.singleTableStrategy.Book</class>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
             <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/postgres?currentSchema=jpa"/>
