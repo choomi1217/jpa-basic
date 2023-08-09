@@ -1,6 +1,6 @@
-package org.example.ch6.practice.service;
+package org.example.practice.service;
 
-import org.example.ch6.practice.entity.Member;
+import org.example.practice.entity.Member;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;

@@ -1,9 +1,9 @@
-package org.example.ch6.practice.service;
+package org.example.practice.service;
 
-import org.example.ch6.practice.entity.Delivery;
-import org.example.ch6.practice.entity.Member;
-import org.example.ch6.practice.entity.Purchase;
-import org.example.ch6.practice.entity.PurchaseItem;
+import org.example.practice.entity.Delivery;
+import org.example.practice.entity.Member;
+import org.example.practice.entity.Purchase;
+import org.example.practice.entity.PurchaseItem;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;

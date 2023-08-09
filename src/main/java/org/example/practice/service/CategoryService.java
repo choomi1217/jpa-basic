@@ -1,7 +1,7 @@
-package org.example.ch6.practice.service;
+package org.example.practice.service;
 
-import org.example.ch6.practice.entity.Category;
-import org.example.ch6.practice.entity.CategoryItem;
+import org.example.practice.entity.Category;
+import org.example.practice.entity.CategoryItem;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;

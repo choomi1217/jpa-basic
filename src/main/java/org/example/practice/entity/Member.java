@@ -1,4 +1,4 @@
-package org.example.ch6.practice.entity;
+package org.example.practice.entity;
 
 import lombok.NoArgsConstructor;
 
