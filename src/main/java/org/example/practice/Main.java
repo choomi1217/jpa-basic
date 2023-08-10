@@ -24,12 +24,34 @@ public class Main {
         Category lineNote = categoryService.save(new Category(noteCategory.getId(), "lineNote"));
 
         //상품등록
-        Item note = itemService.save(new Item("note", 1000, 10), lineNote);
+        Album album = new Album();
+        album.setName("album");
+        album.setPrice(10000);
+        album.setStockQuantity(10);
+        album.setArtist("홍길동");
+
+        Book book = new Book();
+        book.setName("book");
+        book.setPrice(30000);
+        book.setStockQuantity(30);
+        book.setAuthor("이영희");
+        book.setIsbn("123-123-123");
+
+        Movie movie = new Movie();
+        movie.setName("movie");
+        movie.setPrice(20000);
+        movie.setStockQuantity(20);
+        movie.setDirector("김철수");
+        movie.setActor("이영희");
+
+        itemService.save(album, lineNote);
+        itemService.save(book, lineNote);
+        itemService.save(movie, lineNote);
 
         //상품구매
         Delivery delivery = deliveryService.save(new Delivery(member.getCity(), member.getStreet(), member.getZipcode()));
         Purchase purchase = purchaseService.save(new Purchase(member, delivery));
-        purchaseService.save(new PurchaseItem(purchase, note, 1));
+        purchaseService.save(new PurchaseItem(purchase, album, 1));
 
         //회원조회
         Member cho = memberService.find(member.getId());
@@ -51,11 +73,6 @@ public class Main {
             });
             System.out.println("-----");
         });
-        //회원 주문내역 별 상품 카테고리 조회
-        note.getCategoryItem().forEach(categoryItem -> {
-            System.out.println("category : " + categoryItem.getCategory().getName());
-        });
-
 
     }
 }

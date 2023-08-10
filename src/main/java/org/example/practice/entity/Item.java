@@ -8,7 +8,9 @@ import java.util.List;
 
 @Entity
 @NoArgsConstructor
-public class Item {
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "DTYPE")
+public abstract class Item {
     @Id @GeneratedValue
     @Column(name = "ITEM_ID")
     private Long id;
@@ -65,4 +67,7 @@ public class Item {
     public void addCategoryItem(CategoryItem categoryItem) {
         this.categoryItem.add(categoryItem);
     }
+
+
 }
+
