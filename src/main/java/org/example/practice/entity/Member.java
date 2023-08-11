@@ -4,11 +4,12 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Entity
 @NoArgsConstructor
-public class Member {
+public class Member extends BaseEntity{
     @Id @GeneratedValue
     @Column(name = "MEMBER_ID")
     private Long id;
@@ -25,6 +26,7 @@ public class Member {
         this.city = city;
         this.street = street;
         this.zipcode = zipcode;
+        super.setCreatedAt(new Date());
     }
 
     public String getName() {

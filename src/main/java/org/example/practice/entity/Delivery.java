@@ -3,10 +3,11 @@ package org.example.practice.entity;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @NoArgsConstructor
-public class Delivery {
+public class Delivery extends BaseEntity{
     @Id @GeneratedValue
     @Column(name = "DELIVERY_ID")
     private Long id;
@@ -17,6 +18,7 @@ public class Delivery {
     private String zipcode;
 
     public Delivery(String city, String street, String zipcode) {
+        super.setCreatedAt(new Date());
         this.status = DeliveryStatus.READY;
         this.city = city;
         this.street = street;

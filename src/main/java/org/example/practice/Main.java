@@ -5,6 +5,7 @@ import org.example.practice.service.*;
 
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import java.util.Date;
 
 public class Main {
     private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("myApp");
@@ -25,12 +26,14 @@ public class Main {
 
         //상품등록
         Album album = new Album();
+        album.setCreatedAt(new Date());
         album.setName("album");
         album.setPrice(10000);
         album.setStockQuantity(10);
         album.setArtist("홍길동");
 
         Book book = new Book();
+        book.setCreatedAt(new Date());
         book.setName("book");
         book.setPrice(30000);
         book.setStockQuantity(30);
@@ -38,6 +41,7 @@ public class Main {
         book.setIsbn("123-123-123");
 
         Movie movie = new Movie();
+        movie.setCreatedAt(new Date());
         movie.setName("movie");
         movie.setPrice(20000);
         movie.setStockQuantity(20);

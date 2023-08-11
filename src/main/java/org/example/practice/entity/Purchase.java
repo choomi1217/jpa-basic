@@ -9,7 +9,7 @@ import java.util.List;
 
 @Entity
 @NoArgsConstructor
-public class Purchase {
+public class Purchase extends BaseEntity{
     @Id @GeneratedValue
     @Column(name = "PURCHASE_ID")
     private Long id;
@@ -34,6 +34,7 @@ public class Purchase {
         setDelivery(delivery);
         purchaseDate = new Date();
         status = PurchaseStatus.PURCHASE;
+        super.setCreatedAt(new Date());
     }
 
     public Long getId() {
