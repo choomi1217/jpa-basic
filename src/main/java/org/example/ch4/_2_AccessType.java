@@ -13,9 +13,18 @@ public class _2_AccessType {
         EntityManager em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();
 
-        AccessTypeFieldEntity fieldEntity = new AccessTypeFieldEntity("field data1", "field data2");
-        AccessTypePropertyEntity propertyEntity = new AccessTypePropertyEntity("property data1", "property data2");
-        AccessTypeFieldAndPropertyEntity fieldAndPropertyEntity = new AccessTypeFieldAndPropertyEntity("data1", "data2");
+        AccessTypeFieldEntity fieldEntity = new AccessTypeFieldEntity();
+        fieldEntity.setData1("data1");
+        fieldEntity.setData2("data2");
+
+        AccessTypePropertyEntity propertyEntity = new AccessTypePropertyEntity();
+        propertyEntity.setData1("data1");
+        propertyEntity.setData2("data2");
+
+        AccessTypeFieldAndPropertyEntity fieldAndPropertyEntity = new AccessTypeFieldAndPropertyEntity();
+        fieldAndPropertyEntity.setData1("data1");
+        fieldAndPropertyEntity.setData2("data2");
+
 
         tx.begin();
 
@@ -46,14 +55,9 @@ class AccessTypeFieldEntity {
 
     private String data1;
     private String data2;
-
-    public AccessTypeFieldEntity(String data1, String data2) {
-        this.data1 = data1;
-        this.data2 = data2;
-    }
 }
 
-@Entity
+@Entity @Getter @Setter
 @NoArgsConstructor
 @Access(AccessType.PROPERTY)
 class AccessTypePropertyEntity {
@@ -64,35 +68,25 @@ class AccessTypePropertyEntity {
 
     private String data2;
 
-    public AccessTypePropertyEntity(String data1, String data2) {
-        this.data1 = data1;
-        this.data2 = data2;
-    }
+    private String data;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long getId() {
         return id;
     }
-    public void setId(Long id) {
-        this.id = id;
-    }
 
-    @Column
     public String getData1() {
         return data1;
-    }
-
-    public void setData1(String data1) {
-        this.data1 = data1;
     }
 
     public String getData2() {
         return data2;
     }
 
-    public void setData2(String data2) {
-        this.data2 = data2;
+    @Access(AccessType.PROPERTY)
+    public String getData(){
+        return data1 + data2;
     }
 
 }
@@ -113,11 +107,6 @@ class AccessTypeFieldAndPropertyEntity {
 
     @Transient
     private String data;
-
-    public AccessTypeFieldAndPropertyEntity(String data1, String data2) {
-        this.data1 = data1;
-        this.data2 = data2;
-    }
 
     @Access(AccessType.PROPERTY)
     public String getData() {

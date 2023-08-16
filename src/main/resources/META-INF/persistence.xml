@@ -4,8 +4,14 @@
              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
              http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
     <persistence-unit name="myApp">
-        <class>org.example.ch8.proxy.Member</class>
-        <class>org.example.ch8.proxy.Team</class>
+
+        <!-- chapter 8 -->
+<!--        <class>org.example.ch8.proxy.accessType.property.Member</class>-->
+<!--        <class>org.example.ch8.proxy.accessType.property.Team</class>-->
+        <class>org.example.ch8.proxy.accessType.field.Member</class>
+        <class>org.example.ch8.proxy.accessType.field.Team</class>
+
+        <!-- practice -->
 <!--        <class>org.example.practice.entity.Album</class>-->
 <!--        <class>org.example.practice.entity.Book</class>-->
 <!--        <class>org.example.practice.entity.Item</class>-->
