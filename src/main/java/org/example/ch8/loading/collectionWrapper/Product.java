@@ -1,4 +1,4 @@
-package org.example.ch8.proxy;
+package org.example.ch8.loading.collectionWrapper;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -6,18 +6,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class Team {
-    @Id
-    @Column(name = "TEAM_ID")
-    private String id;
+public class Product {
+    @Id @Column(name = "PRODUCT_ID")
+    @GeneratedValue
+    private Long id;
     private String name;
 
-    public String getId() {
+    public Long getId() {
         return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getName() {

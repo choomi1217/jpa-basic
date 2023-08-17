@@ -6,10 +6,12 @@
     <persistence-unit name="myApp">
 
         <!-- chapter 8 -->
-<!--        <class>org.example.ch8.proxy.accessType.property.Member</class>-->
-<!--        <class>org.example.ch8.proxy.accessType.property.Team</class>-->
-        <class>org.example.ch8.proxy.accessType.field.Member</class>
-        <class>org.example.ch8.proxy.accessType.field.Team</class>
+        <class>org.example.ch8.loading.transitivePersistence.Parent</class>
+        <class>org.example.ch8.loading.transitivePersistence.Child</class>
+<!--        <class>org.example.ch8.loading.collectionWrapper.Member</class>-->
+<!--        <class>org.example.ch8.loading.collectionWrapper.Product</class>-->
+<!--        <class>org.example.ch8.loading.collectionWrapper.Purchase</class>-->
+<!--        <class>org.example.ch8.loading.collectionWrapper.Team</class>-->
 
         <!-- practice -->
 <!--        <class>org.example.practice.entity.Album</class>-->

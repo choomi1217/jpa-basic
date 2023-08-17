@@ -13,16 +13,47 @@ public class Main {
         EntityManager em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();
 
-        // 식별자가 보관되고 초기화 되지 않음
-        Team teamA = em.getReference(Team.class, "A");
-        System.out.println(teamA.getId());
+        usefulAssociationSetting(em);
+        proxyNotInitialized(em);
+        initializeDetachEntity(em);
+        isProxyInitialized(em, emf);
 
-        // 연관관계를 설정할 때 유용하게 사용할 수 있습니다.
+        emf.close();
+    }
+
+    /**
+     * 연관관계를 설정할 때 유용하게 사용할 수 있습니다.
+     * */
+    private static void usefulAssociationSetting(EntityManager em) {
         Member member = em.find(Member.class, "cho");
         Team proxyTeam = em.getReference(Team.class, "A");
         member.setTeam(proxyTeam);
+    }
 
-        // 준영속 상태가 된 프록시 객체에 초기화를 요청하면 에러가납니다.
+    /**
+     * 식별자가 보관되고 초기화 되지 않음.
+     * */
+    private static void proxyNotInitialized(EntityManager em) {
+        proxyNotInitialized(em);
+        Team teamA = em.getReference(Team.class, "A");
+        System.out.println(teamA.getId());
+    }
+
+    /**
+     * 프록시의 초기화 여부를 판단 할 수 있습니다.
+     * */
+    private static void isProxyInitialized(EntityManager em, EntityManagerFactory emf) {
+        Member proxyMember = em.getReference(Member.class, "cho");
+        System.out.println("isInitialized = " + emf.getPersistenceUnitUtil().isLoaded(proxyMember));
+        proxyMember.getUsername();
+        System.out.println("isInitialized = " + emf.getPersistenceUnitUtil().isLoaded(proxyMember));
+
+    }
+
+    /**
+     * 준영속 상태가 된 프록시 객체에 초기화를 요청하면 에러가납니다.
+     * */
+    private static void initializeDetachEntity(EntityManager em) {
         Member proxyMember = em.getReference(Member.class, "cho");
         em.close();
         try {
@@ -30,8 +61,6 @@ public class Main {
         }catch (LazyInitializationException e) {
             System.out.println("LazyInitializationException");
         }
-
-        emf.close();
     }
 
     private static void printMember(EntityManager em) {
