@@ -1,9 +1,10 @@
-package org.example.ch8.orphan;
+package org.example.ch8.orphan.only;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -12,18 +13,20 @@ public class Main {
         EntityTransaction tx = em.getTransaction();
 
         tx.begin();
-        Parent parent = em.find(Parent.class, 255L);
-        parent.getChild().forEach(child -> {
+        Parent parent = em.find(Parent.class, 269L);
+        List<Child> children = parent.getChild();
+        children.forEach(child -> {
             System.out.println("child = " + child.getName());
         });
 
-        parent.getChild().remove(0);
+        em.remove(parent);
         tx.commit();
 
-        System.out.println("--- after remove ---");
-        parent.getChild().forEach(child -> {
-            System.out.println("child = " + child.getName());
-        });
+        try {
+            em.find(Child.class, children.get(0));
+        }catch (IllegalArgumentException e) {
+            System.out.println("child is null");
+        }
 
         emf.close();
     }

@@ -1,4 +1,4 @@
-package org.example.ch8.orphan;
+package org.example.ch8.orphan.withTransitive;
 
 import javax.persistence.*;
 
@@ -9,7 +9,7 @@ public class Child {
     private Long id;
     private String name;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "PARENT_ID")
     private Parent parent;
 

@@ -1,4 +1,4 @@
-package org.example.ch8.orphan;
+package org.example.ch8.orphan.withTransitive;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -10,7 +10,7 @@ public class Parent {
     @Column(name = "PARENT_ID")
     private Long id;
     private String name;
-    @OneToMany(mappedBy = "parent", orphanRemoval = true)
+    @OneToMany(mappedBy = "parent", orphanRemoval = true, cascade = CascadeType.ALL)
     private List<Child> child = new ArrayList<Child>();
 
     public Long getId() {
