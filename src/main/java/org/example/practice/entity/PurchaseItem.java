@@ -11,11 +11,11 @@ public class PurchaseItem {
     @Column(name = "PURCHASE_ITEM_ID")
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "PURCHASE_ID")
     private Purchase purchase;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ITEM_ID")
     private Item item;
 
@@ -48,5 +48,9 @@ public class PurchaseItem {
 
     public int getCount() {
         return count;
+    }
+
+    public void setPurchase(Purchase purchase) {
+        this.purchase = purchase;
     }
 }

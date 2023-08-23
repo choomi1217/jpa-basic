@@ -6,6 +6,7 @@ import org.example.practice.service.*;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import java.util.Date;
+import java.util.List;
 
 public class Main {
     private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("myApp");
@@ -18,51 +19,35 @@ public class Main {
     public static void main(String[] args) {
 
         //회원등록
-        Member member = memberService.save(new Member("cho", "서울", "서초구", "123-123"));
+        Address address = new Address("서울", "서초구", "123-123");
+        Member member = memberService.save(new Member("cho", address));
 
         //카테고리등록
         Category noteCategory = categoryService.save(new Category("note"));
         Category lineNote = categoryService.save(new Category(noteCategory.getId(), "lineNote"));
 
         //상품등록
-        Album album = new Album();
-        album.setCreatedAt(new Date());
-        album.setName("album");
-        album.setPrice(10000);
-        album.setStockQuantity(10);
-        album.setArtist("홍길동");
-
-        Book book = new Book();
-        book.setCreatedAt(new Date());
-        book.setName("book");
-        book.setPrice(30000);
-        book.setStockQuantity(30);
-        book.setAuthor("이영희");
-        book.setIsbn("123-123-123");
-
-        Movie movie = new Movie();
-        movie.setCreatedAt(new Date());
-        movie.setName("movie");
-        movie.setPrice(20000);
-        movie.setStockQuantity(20);
-        movie.setDirector("김철수");
-        movie.setActor("이영희");
+        Album album = new Album("album", 10000, 10, "홍길동", new Date());
+        Book book = new Book("book", 20000, 20, "이영희", "123-123-123", new Date());
+        Movie movie = new Movie("movie", 30000, 30, "김철수", "이영희", new Date());
 
         itemService.save(album, lineNote);
         itemService.save(book, lineNote);
         itemService.save(movie, lineNote);
 
         //상품구매
-        Delivery delivery = deliveryService.save(new Delivery(member.getCity(), member.getStreet(), member.getZipcode()));
+        Delivery delivery = new Delivery(member.getAddress());
         Purchase purchase = purchaseService.save(new Purchase(member, delivery));
-        purchaseService.save(new PurchaseItem(purchase, album, 1));
+        purchaseService.addPurchaseItem(purchase, new PurchaseItem(purchase, album, 1));
 
         //회원조회
         Member cho = memberService.find(member.getId());
 
         //회원 주문내역 조회
         System.out.println("----- " + cho.getName() + " 회원님의 주문내역 -----");
+
         cho.getPurchases().forEach(userPurchase -> {
+            System.out.println("* 주문자 : " + userPurchase.getMember().getName());
             System.out.println("* 주문번호 : " + userPurchase.getId());
             System.out.println("* 주문상태 : " + userPurchase.getStatus());
             System.out.println("* 주문날짜 : " + userPurchase.getPurchaseDate());

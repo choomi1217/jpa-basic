@@ -14,55 +14,27 @@ public class Member extends BaseEntity{
     @Column(name = "MEMBER_ID")
     private Long id;
     private String name;
-    private String city;
-    private String street;
-    private String zipcode;
-
+    @Embedded
+    private Address address;
     @OneToMany(mappedBy = "member")
     private List<Purchase> purchases = new ArrayList<Purchase>();
 
-    public Member(String name, String city, String street, String zipcode) {
+    public Member(String name, Address address) {
         this.name = name;
-        this.city = city;
-        this.street = street;
-        this.zipcode = zipcode;
+        this.address = address;
         super.setCreatedAt(new Date());
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public Long getId() {
         return id;
     }
 
-    public String getCity() {
-        return city;
+    public String getName() {
+        return name;
     }
 
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getStreet() {
-        return street;
-    }
-
-    public void setStreet(String street) {
-        this.street = street;
-    }
-
-    public String getZipcode() {
-        return zipcode;
-    }
-
-    public void setZipcode(String zipcode) {
-        this.zipcode = zipcode;
+    public Address getAddress() {
+        return address;
     }
 
     public List<Purchase> getPurchases() {

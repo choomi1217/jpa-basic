@@ -17,11 +17,11 @@ public class Purchase extends BaseEntity{
     @JoinColumn(name = "MEMBER_ID")
     private Member member;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "DELIVERY_ID")
     private Delivery delivery;
 
-    @OneToMany(mappedBy = "purchase")
+    @OneToMany(mappedBy = "purchase", cascade = CascadeType.ALL)
     private List<PurchaseItem> purchaseItems = new ArrayList<PurchaseItem>();
 
     private Date purchaseDate;
@@ -75,5 +75,10 @@ public class Purchase extends BaseEntity{
 
     public void setStatus(PurchaseStatus status) {
         this.status = status;
+    }
+
+    public void addPurchaseItem(PurchaseItem purchaseItem) {
+        purchaseItems.add(purchaseItem);
+        purchaseItem.setPurchase(this);
     }
 }

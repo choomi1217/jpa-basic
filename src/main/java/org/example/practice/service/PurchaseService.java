@@ -1,6 +1,5 @@
 package org.example.practice.service;
 
-import org.example.practice.entity.Delivery;
 import org.example.practice.entity.Member;
 import org.example.practice.entity.Purchase;
 import org.example.practice.entity.PurchaseItem;
@@ -21,7 +20,6 @@ public class PurchaseService {
         EntityTransaction tx = em.getTransaction();
         tx.begin();
         Member member = em.merge(purchase.getMember());
-        Delivery delivery = em.merge(purchase.getDelivery());
         em.persist(purchase);
         member.addPurchase(purchase);
         tx.commit();
@@ -35,5 +33,14 @@ public class PurchaseService {
         em.persist(purchaseItem);
         tx.commit();
         return purchaseItem;
+    }
+
+    public void addPurchaseItem(Purchase purchase, PurchaseItem purchaseItem) {
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction tx = em.getTransaction();
+        tx.begin();
+        Purchase merge = em.merge(purchase);
+        merge.addPurchaseItem(purchaseItem);
+        tx.commit();
     }
 }

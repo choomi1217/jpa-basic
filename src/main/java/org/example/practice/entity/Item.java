@@ -4,6 +4,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -22,46 +23,29 @@ public abstract class Item extends BaseEntity{
     @OneToMany(mappedBy = "item")
     private List<CategoryItem> categoryItem = new ArrayList<>();
 
-    public Item(String name, int price, int stockQuantity) {
+    public Item(String name, int price, int stockQuantity, Date date) {
         this.name = name;
         this.price = price;
         this.stockQuantity = stockQuantity;
+        super.setCreatedAt(date);
     }
 
     public Long getId() {
         return id;
     }
-
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public int getPrice() {
         return price;
     }
-
-    public void setPrice(int price) {
-        this.price = price;
-    }
-
     public int getStockQuantity() {
         return stockQuantity;
     }
 
-    public void setStockQuantity(int stockQuantity) {
-        this.stockQuantity = stockQuantity;
-    }
-
     public List<CategoryItem> getCategoryItem() {
         return categoryItem;
-    }
-
-    public void setCategoryItem(List<CategoryItem> categoryItem) {
-        this.categoryItem = categoryItem;
     }
 
     public void addCategoryItem(CategoryItem categoryItem) {
