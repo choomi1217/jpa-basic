@@ -5,7 +5,7 @@ import org.example.ch10.jpql.entity.Member;
 import javax.persistence.*;
 import java.util.List;
 
-public class Main {
+public class Basic {
     public static void main(String[] args) {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("myApp");
         EntityManager em = emf.createEntityManager();
