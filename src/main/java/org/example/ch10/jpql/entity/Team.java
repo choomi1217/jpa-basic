@@ -3,6 +3,7 @@ package org.example.ch10.jpql.entity;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 public class Team {
@@ -24,4 +25,5 @@ public class Team {
     public List<Member> getMembers() {
         return members;
     }
+
 }

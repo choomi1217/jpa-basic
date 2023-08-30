@@ -14,5 +14,15 @@ public class Order {
     @Embedded
     private Address address;
 
+    public Long getId() {
+        return id;
+    }
 
+    public int getOrderAmount() {
+        return orderAmount;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
 }
