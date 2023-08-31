@@ -17,13 +17,8 @@ public class Member {
     @JoinColumn(name = "TEAM_ID")
     private Team team;
 
-    @OneToMany
-    @JoinColumn(name = "MEMBER_ORDER_ID")
+    @OneToMany(mappedBy = "member")
     private List<Order> orders = new ArrayList<Order>();
-
-    @OneToMany
-    @JoinColumn(name = "MEMBER_PRODUCT_ID")
-    private List<Product> products = new ArrayList<Product>();
 
     public Long getId() {
         return id;
@@ -59,13 +54,4 @@ public class Member {
         }
     }
 
-    public List<Product> getProducts() {
-        return products;
-    }
-
-    public void addProduct(Product product) {
-        if (!this.products.contains(product)){
-            this.products.add(product);
-        }
-    }
 }

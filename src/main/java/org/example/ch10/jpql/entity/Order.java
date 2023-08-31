@@ -14,6 +14,10 @@ public class Order {
     @Embedded
     private Address address;
 
+    @ManyToOne
+    @JoinColumn(name = "MEMBER_ORDER_ID")
+    private Member member;
+
     public Long getId() {
         return id;
     }
