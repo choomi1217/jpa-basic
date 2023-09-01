@@ -17,19 +17,16 @@ public class SubQuery {
         //subQuery1(em);
         //subQuery2(em);
         //subQuery3(em);
-        subQuery4(em);
+        exists(em);
 
     }
 
-    private static void subQuery4(EntityManager em) {
-        TypedQuery<Team> query1 = em.createQuery("SELECT t FROM Team t WHERE t.name = 'teamA'", Team.class);
-
-        String query = "SELECT m FROM Member m WHERE m.team = :team";
-        List<Member> resultList = em.createQuery(query, Member.class).setParameter("team", query1.getSingleResult()).getResultList();
+    private static void exists(EntityManager em) {
+        String query = "SELECT m FROM Member m WHERE EXISTS (SELECT t FROM m.team t WHERE t.name = 'teamA')";
+        List<Member> resultList = em.createQuery(query, Member.class).getResultList();
         resultList.forEach(member -> {
             System.out.println("member name: " + member.getName());
         });
-
     }
 
 
