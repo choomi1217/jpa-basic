@@ -4,11 +4,17 @@
              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
              http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
     <persistence-unit name="myApp">
+        <mapping-file>META-INF/namedQuery.xml</mapping-file>
         <!-- jpql -->
         <class>org.example.ch10.jpql.entity.Member</class>
         <class>org.example.ch10.jpql.entity.Order</class>
         <class>org.example.ch10.jpql.entity.Product</class>
         <class>org.example.ch10.jpql.entity.Team</class>
+        <class>org.example.ch10.jpql.entity.Item</class>
+        <class>org.example.ch10.jpql.entity.Album</class>
+        <class>org.example.ch10.jpql.entity.Book</class>
+        <class>org.example.ch10.jpql.entity.Movie</class>
+
         <!-- practice -->
 <!--        <class>org.example.practice.entity.Album</class>-->
 <!--        <class>org.example.practice.entity.Book</class>-->
@@ -29,6 +35,7 @@
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="true"/>
             <property name="hibernate.ejb.naming_strategy" value="org.hibernate.cfg.ImprovedNamingStrategy"/>
+            <property name="hibernate.dialect" value="org.example.ch10.jpql.udf.MyPostgresDialect"/>
         </properties>
     </persistence-unit>
 </persistence>

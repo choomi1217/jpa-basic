@@ -3,7 +3,7 @@ package org.example.ch7.subType.singleTableStrategy;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
-@Entity
+//@Entity
 @DiscriminatorValue("Movie")
 public class Movie extends Item {
     private String director;

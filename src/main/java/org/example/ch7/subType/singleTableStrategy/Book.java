@@ -4,7 +4,7 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.PrimaryKeyJoinColumn;
 
-@Entity
+//@Entity
 @DiscriminatorValue("Book")
 @PrimaryKeyJoinColumn(name = "BOOK_ID")
 public class Book extends Item {

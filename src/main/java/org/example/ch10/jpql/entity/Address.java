@@ -1,8 +1,11 @@
 package org.example.ch10.jpql.entity;
 
+import lombok.Getter;
+
 import javax.persistence.Embeddable;
 
 @Embeddable
+@Getter
 public class Address {
     private String city;
     private String street;

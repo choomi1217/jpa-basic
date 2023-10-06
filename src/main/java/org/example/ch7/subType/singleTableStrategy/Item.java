@@ -2,7 +2,7 @@ package org.example.ch7.subType.singleTableStrategy;
 
 import javax.persistence.*;
 
-@Entity
+//@Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "DTYPE")
 public abstract class Item {

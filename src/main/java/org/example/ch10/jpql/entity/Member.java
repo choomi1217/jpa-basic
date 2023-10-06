@@ -5,6 +5,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@NamedQuery(
+        name = "Member.findByName",
+        query = "SELECT m FROM Member m WHERE m.name = :username"
+)
 public class Member {
     @Id @GeneratedValue
     @Column(name = "MEMBER_ID")
